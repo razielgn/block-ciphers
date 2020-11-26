@@ -68,7 +68,17 @@ cfg_if! {
         any(target_arch = "x86_64", target_arch = "x86"),
     ))] {
         mod ni;
-        pub use ni::{Aes128, Aes192, Aes256};
+
+        cfg_if! {
+            if #[cfg(feature = "autodetect")] {
+                mod autodetect;
+                mod soft;
+
+                pub use autodetect::{Aes128, Aes192, Aes256};
+            } else {
+                pub use ni::{Aes128, Aes192, Aes256};
+            }
+        }
 
         #[cfg(feature = "ctr")]
         cfg_if! {

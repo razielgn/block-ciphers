@@ -17,6 +17,7 @@ categories = ["cryptography", "no-std"]
 [dependencies]
 cfg-if = "1"
 cipher = "=0.3.0-pre"
+cpuid-bool = { version = "0.1", optional = true }
 ctr = { version = "=0.7.0-pre", optional = true }
 opaque-debug = "0.3"
 
@@ -24,6 +25,7 @@ opaque-debug = "0.3"
 cipher = { version = "=0.3.0-pre", features = ["dev"] }
 
 [features]
+autodetect = ["cpuid-bool"] # Detect hardware AES and fallback to "soft" if unavailable
 compact = [] # Reduce code size at the cost of performance
 
 [package.metadata.docs.rs]

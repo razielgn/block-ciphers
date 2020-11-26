@@ -1,5 +1,7 @@
 //! AES in counter mode (a.k.a. AES-CTR)
 
+#![cfg_attr(feature = "autodetect", allow(dead_code))]
+
 use super::{Aes128, Aes192, Aes256};
 
 /// AES-128 in CTR mode
